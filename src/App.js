@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
+//import Axios from "axios";
 
 function App() {
 	const [name, setName] = useState([]);
 
 	useEffect(() => {
-		async function response() {
+		/*async function response() {
 			let res = await Axios.get("/user");
 			let data = res.data;
 			console.log(data);
@@ -14,17 +14,18 @@ function App() {
 		response().then((data) => {
 			setName(data);
 		});
-		// fetch("http://localhost:5000/user")
-		// 	.then((httpResponse) => {
-		// 		console.log(httpResponse);
-		// 		// httpResponse.json().then((antwortObjekt) => {
-		// 		// 	const leute = antwortObjekt;
-		// 		// 	setname(leute);
-		// 		// });
-		// 	})
-		// 	.catch((fehler) => {
-		// 		console.error(fehler);
-		// 	});
+		*/
+		 fetch("/user")
+			.then((Response) => {
+		 		console.log(Response);
+				Response.json().then((antwort) => {
+		const users = antwort;
+		setName(users);
+	 });
+			})
+		 	.catch((fehler) => {
+				console.error(fehler);
+		 	});
 	}, []);
 
 	return (
